@@ -1,0 +1,27 @@
+{
+  "name": "reverseweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperDev993595/ReverseWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SuperDev993595/ReverseWeb/issues"
+  },
+  "homepage": "https://github.com/SuperDev993595/ReverseWeb#readme",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "axios-cookiejar-support": "^6.0.2",
+    "dotenv": "^16.5.0",
+    "tough-cookie": "^5.1.2"
+  }
+}
