@@ -70,6 +70,18 @@ To deploy or run this project on another machine or server:
 
 - The output file `users.json` will contain the fetched users and current user information.
 
+## GitHub Repository
+
+- https://github.com/SuperDev993595/ReverseWeb
+
+## Loom Video
+
+- [Project Walkthrough Video](https://www.loom.com/share/dafe8d6017754611a3c8a2df5173985c?sid=78af5a3b-0b1d-4bf5-b9cf-7692139b7803)
+
+## Total Development Time
+
+- 3 hours
+
 ## License
 
 This project is licensed under the ISC License.

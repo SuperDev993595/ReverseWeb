@@ -65,7 +65,6 @@ class ScrapUserList {
       console.log(`${API_BASE}/login`);
       
       const apiUrl = this.constructApiUrl(`login`, {});
-      console.log(apiUrl);
       var response = await client.post(apiUrl, _params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -112,8 +111,16 @@ class ScrapUserList {
         `${API_BASE}/settings/tokens`,
         {},
       );
-      //console.log(response.data);
-      return response.data;
+      
+      const $ = cheerio.load(response.data);
+      const currentUser = {};
+
+      $('input[type="hidden"]').each((_, el) => {
+        const key = $(el).attr('id') || $(el).attr('name');
+        currentUser[key] = $(el).attr('value');
+      });
+
+      return currentUser;
     } catch (error) {
       console.error("Failed to fetch current user:", error.message);
       return null;
@@ -124,14 +131,7 @@ class ScrapUserList {
     try {
       await this.login();
       const users = await this.getUsers();
-      const currentUser_html = await this.getCurrentUser();
-      const $ = cheerio.load(currentUser_html);
-      const currentUser = {};
-
-      $('input[type="hidden"]').each((_, el) => {
-        const key = $(el).attr('id') || $(el).attr('name');
-        currentUser[key] = $(el).attr('value');
-      });
+      const currentUser = await this.getCurrentUser();
 
       const output = {
         users,
@@ -146,6 +146,7 @@ class ScrapUserList {
       process.exit(1);
     }
   }
+  
   constructApiUrl(endpoint, params) {
     const url = new URL(`${API_BASE}/${endpoint}`);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
